@@ -21,4 +21,12 @@ attr_accessor :film_name, :director, :lead_actor, :supporting_actor, :run_time, 
     @cast_members.push(member_to_add)
   end
 
+  def increase_rating(rating_increase_num)
+    @rating += rating_increase_num
+  end
+
+  # def find_cast_member?(member)
+  #   return @cast_members.include?(member)
+  # end
+
 end

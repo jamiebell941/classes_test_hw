@@ -55,5 +55,22 @@ class TestMovies < MiniTest::Test
   def test_increase_rating()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
     movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
+    movies.increase_rating(2.1)
+    assert_equal(10, movies.rating)
+  end
+
+  def test_find_cast_member__found()
+    cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
+    movies.find_cast_member?("Ralph Fiennes")
+    assert_equal(true, movies.cast_members)
+  end
+
+  def test_find_cast_member__not_found()
+    cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
+    movies.find_cast_member?("Clémence Poésy")
+    assert_equal(false, movies.cast_members)
+  end
 
 end
