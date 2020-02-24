@@ -6,26 +6,26 @@ class TestMovies < MiniTest::Test
 
   def test_get_film_name()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members)
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
     assert_equal("In Bruges", movies.film_name)
   end
 
   def test_get_lead_actor()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("Seven Psychopaths", "Martin McDonagh", "Colin Farell", "Sam Rockwell", 117, cast_members)
+    movies = Movies.new("Seven Psychopaths", "Martin McDonagh", "Colin Farell", "Sam Rockwell", 117, cast_members, 7.2)
     assert_equal("Colin Farell", movies.lead_actor)
   end
 
   def test_set_supporting_actor()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("Seven Psychopaths", "Martin McDonagh", "Colin Farell", "Sam Rockwell", 117, cast_members)
+    movies = Movies.new("Seven Psychopaths", "Martin McDonagh", "Colin Farell", "Sam Rockwell", 117, cast_members, 7.2)
     movies.supporting_actor = "Woody Harelson"
     assert_equal("Woody Harelson", movies.supporting_actor)
   end
 
   def test_set_new_film()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members)
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 8.2)
     movies.film_name = "Three Billboards"
     movies.director = "Martin McDonagh"
     movies.lead_actor = "Frances McDormand"
@@ -40,15 +40,20 @@ class TestMovies < MiniTest::Test
 
   def test_directors_cut_runtime()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members)
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
     movies.directors_cut_runtime(10)
     assert_equal(133, movies.run_time)
   end
 
   def test_add_cast_member()
     cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
-    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members)
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
     movies.add_cast_member("Clémence Poésy")
     assert_equal(4, movies.cast_members.count)
   end
+
+  def test_increase_rating()
+    cast_members = "Ralph Fiennes", "Eric Godon", "Elizabeth Berrington"
+    movies = Movies.new("In Bruges", "Martin McDonagh", "Colin Farell", "Brendan Gleeson", 123, cast_members, 7.9)
+
 end
